@@ -10,9 +10,8 @@ import {
 } from 'react-native';
 
 const fetchData = resolve => () =>
-  fetch('https://qc-dev.viscovery.com/quality_checking/webapi/job/v1/5ad814cd297b550015888357/labelled')
+  fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
-    .then(r => r.response_data)
     .then(d => resolve(d))
 
 export default class App extends React.Component {
@@ -35,9 +34,9 @@ export default class App extends React.Component {
         {
           data.map(d => (
             <Text
-              key={d.brand_id}
+              key={d.id}
             >
-              {`${d.brand_id}-${d.checked}`}
+              {`${d.name}-${d.email}`}
             </Text>
           ))
         }
@@ -60,7 +59,7 @@ export default class App extends React.Component {
         />
         <Image 
           source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
-          style={{ width: 400, height: 400 }} 
+          style={{ width: 50, height: 50 }} 
         />
         <Button
           title="fetch"
@@ -94,6 +93,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 });
