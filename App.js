@@ -12,6 +12,8 @@ import List from './src/components/List';
 const App = StackNavigator({
   Home: { screen: Home },
   List: { screen: List },
+}, {
+  initialRouteName: 'Home',
 });
 
 export default App;
