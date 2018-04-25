@@ -64,10 +64,10 @@ export default class Home extends React.Component {
             style={{ width: 300, height: 300 }}
           />
           <Button
-            title="To List Page"
+            title="List"
             onPress={() => Alert.alert(
-              'Alert Title',
-              'My Alert Msg',
+              'To List Page',
+              'get posts list',
               [
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
                 { text: 'OK', onPress: () => navigate('List') },
