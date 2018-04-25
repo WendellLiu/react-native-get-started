@@ -8,11 +8,11 @@ import {
   Alert,
   Image,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
 import {
   StyledView,
-  StyledScrollView,
 } from './components';
 
 const fetchData = resolve => () =>
@@ -37,7 +37,12 @@ export default class Home extends React.Component {
     } = this.state;
     return (
       <StyledView>
-        <StyledScrollView>
+        <ScrollView
+          contentContainerStyle={{
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+          }}
+        >
           {
             data.map(d => (
               <Text
@@ -89,7 +94,7 @@ export default class Home extends React.Component {
               { cancelable: false }
             )}
           />
-        </StyledScrollView>
+        </ScrollView>
       </StyledView>
     );
   }
