@@ -33,9 +33,7 @@ export default class List extends React.Component {
           data={data}
           keyExtractor={item => String(item.id)}
           renderItem={({ item: d }) => (
-            <Text
-              key={d.id}
-            >
+            <Text>
               {`${d.id}: ${d.title}`}
             </Text>
           )}
