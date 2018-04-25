@@ -15,26 +15,25 @@ import {
   StyledView,
 } from './components';
 
-const fetchData = resolve => () =>
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.json())
-    .then(d => resolve(d))
-
 export default class Home extends React.Component {
   state = {
-    data: [],
     title: '',
   }
 
-  setData = data => this.setState({ data })
+  static navigationOptions = {
+    title: 'Home',
+  };
+
 
   setTitle = title => this.setState({ title })
 
   render() {
     const {
-      data,
       title,
     } = this.state;
+
+    const { navigate } = this.props.navigation;
+
     return (
       <StyledView>
         <ScrollView
@@ -43,15 +42,6 @@ export default class Home extends React.Component {
             justifyContent: 'flex-start',
           }}
         >
-          {
-            data.map(d => (
-              <Text
-                key={d.id}
-              >
-                {`${d.name}-${d.email}`}
-              </Text>
-            ))
-          }
           <Text
             style={{
               fontSize: 40,
@@ -74,14 +64,6 @@ export default class Home extends React.Component {
             style={{ width: 300, height: 300 }}
           />
           <Button
-            title="fetch"
-            onPress={fetchData(this.setData)}
-          />
-          <Button
-            title="clear"
-            onPress={() => this.setData([])}
-          />
-          <Button
             title="Confirm"
             onPress={() => Alert.alert(
               'Alert Title',
@@ -89,7 +71,7 @@ export default class Home extends React.Component {
               [
                 { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
+                { text: 'OK', onPress: () => navigate('List') },
               ],
               { cancelable: false }
             )}
